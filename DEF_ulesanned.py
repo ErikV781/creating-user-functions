@@ -1,9 +1,19 @@
-﻿#ül 8
-def XOR_cipher(text, key):
-    return ''.join(chr(ord(c) ^ key) for c in text)
+#ül 8
+def XOR_cipher(text: str, võti: int) -> str:
+    """Sõne kodeerimine ASCII võtmega (0-255)."""
+    kodeeritud = ""
+    for symbol in text:
+        kodeeritud += chr(ord(symbol) ^ võti)
+    return kodeeritud
 
-def XOR_uncipher(encrypted_text, key):
-    return ''.join(chr(ord(c) ^ key) for c in encrypted_text)
+def XOR_uncipher(kodeeritud_text: str, võti: int) -> str:
+    """Sõne dekodeerimine ASCII võtmega (0-255)."""
+    dekodeeritud = ""
+    for symbol in kodeeritud_text:
+        dekodeeritud += chr(ord(symbol) ^ võti) #непонял но списа!
+    return dekodeeritud
+
+ 
 
 #Ül7
 import calendar
@@ -19,13 +29,16 @@ month = int(input("Введите месяц: "))
 year = int(input("Введите год: "))
 print(date(day, month, year))
 #Ül 6
-def is_prime(n):
-    if n < 2:
-        return False
-    for i in range(2, int(n ** 0.5) + 1):
+def is_prime(a=randint(0,1000))->bool:
+    """
+    """
+    print(a)
+    v=True
+
+    for i in range(2, a):
         if n % i == 0:
-            return False
-    return True
+            v=False
+    return v
 
 n = int(input("Введите число от 0 до 1000: "))
 print(is_prime(n))
@@ -47,6 +60,7 @@ def season(month):
     elif month in [6, 7, 8]:
         return "suvi"
     elif month in [9, 10, 11]:
+#сделал так, потому что красивее
         return "sügis"
     else:
         return "Неверный номер месяца"
@@ -94,4 +108,6 @@ op = input("Введите операцию (+, -, *, /): ")
 
 result = arithmetic(a, b, op)
 print("Результат:", result)
+
+
 
